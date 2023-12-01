@@ -1,6 +1,6 @@
 # Semi Admin Template
 
-Based on React, Typescript, and Semi management system templates.
+Based on React, Typescript, Vite, and Semi management system templates.
 
 ## Used
 
