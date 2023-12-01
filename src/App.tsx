@@ -9,7 +9,7 @@ import { Path } from './constant';
 import { Login } from './components/login';
 import { Home } from './components/home';
 import { RootLayout as Layout } from './components/layout';
-import { Dashboard } from './components/Dashboard';
+import { Dashboard } from './components/dashboard';
 
 function Screen() {
   const isAuthorized = true;
