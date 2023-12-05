@@ -1,10 +1,9 @@
-import { Nav, Avatar, Layout, Dropdown } from '@douyinfe/semi-ui';
-import { IconFeishuLogo, IconHelpCircle, IconBell, IconSemiLogo, IconDoubleChevronRight, IconDoubleChevronLeft } from '@douyinfe/semi-icons';
-import { IconIntro, IconHeart, IconCalendar, IconCheckbox, IconRadio, IconList, IconToast } from '@douyinfe/semi-icons-lab';
+import { Nav, Avatar, Layout, Dropdown, Button } from '@douyinfe/semi-ui';
+import { IconGithubLogo, IconSemiLogo, IconDoubleChevronRight, IconDoubleChevronLeft } from '@douyinfe/semi-icons';
 import styles from './layout.module.scss';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-import { Path, PathKey } from '../constant';
+import { routers } from '../router';
 
 
 export const RootLayout = (props: {
@@ -12,7 +11,7 @@ export const RootLayout = (props: {
 }) => {
   const { Header, Sider, Content } = Layout;
   const [collapsed, setCollapsed] = useState(false)
-  const [selectedKey, setSelectedKey] = useState(PathKey.Home)
+  const [selectedKey, setSelectedKey] = useState('/')
   return (
     <Layout>
       <Header className={styles.header}>
@@ -28,9 +27,7 @@ export const RootLayout = (props: {
           }}
           footer={
             <div className={styles.dIV}>
-              <IconFeishuLogo size="large" className={styles.semiIconsFeishuLogo} />
-              <IconHelpCircle size="large" className={styles.semiIconsHelpCircle} />
-              <IconBell size="large" className={styles.semiIconsBell} />
+              <Button icon={<IconGithubLogo className={styles.semiIconsBell} />} aria-label="GitHub" onClick={() => window.open('https://github.com/ytwp/semi-admin-template', '_blank')} />
 
               <Dropdown
                 position={'bottomRight'}
@@ -67,147 +64,26 @@ export const RootLayout = (props: {
             isCollapsed={collapsed}
             onCollapseChange={(e) => { console.log(e) }}
             renderWrapper={({ itemElement, props }) => {
-              return (
-                <Link
-                  style={{ textDecoration: "none" }}
-                  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                  //@ts-ignore
-                  to={Path[props.itemKey]}
-                >
-                  {itemElement}
-                </Link>
-              );
+              console.log(itemElement, props)
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              //@ts-ignore
+              if (props.routeProps) {
+                return (
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    //@ts-ignore
+                    to={props.routeProps.path}
+                  >
+                    {itemElement}
+                  </Link>
+                );
+              } else {
+                return itemElement
+              }
             }}
+            items={routers}
           >
-            <Nav.Item
-              itemKey={PathKey.Home}
-              text="Home"
-              icon={<IconIntro className={styles.iconIntro} />}
-              className={styles.navItem}
-            />
-            <Nav.Item
-              itemKey={PathKey.Dashboard}
-              text="Dashboard"
-              icon={<IconHeart className={styles.iconHeart} />}
-              className={styles.navItem1}
-            />
-            <Nav.Item
-              itemKey="Project"
-              text="Project"
-              icon={<IconCalendar className={styles.iconCalendar} />}
-              className={styles.navItem2}
-            />
-            <Nav.Item
-              itemKey="Tasks"
-              text="Tasks"
-              icon={<IconCheckbox className={styles.iconCheckbox} />}
-              className={styles.navItem3}
-            />
-            <Nav.Item
-              itemKey="Reporting"
-              text="Reporting"
-              icon={<IconCalendar className={styles.iconCalendar} />}
-              className={styles.navItem4}
-            />
-            <Nav.Item
-              itemKey="Users"
-              text="Users"
-              icon={<IconRadio className={styles.iconRadio} />}
-              className={styles.navItem5}
-            />
-            <Nav.Item
-              itemKey="Support"
-              text="Support"
-              icon={<IconList className={styles.iconList} />}
-              className={styles.navItem6}
-            />
-            <Nav.Item
-              itemKey="Settings"
-              text="Settings"
-              icon={<IconToast className={styles.iconToast} />}
-              className={styles.navItem7}
-            />
-            <Nav.Sub
-              itemKey='Settings0'
-              text="Settings0"
-              icon={<IconToast className={styles.iconNavSub} />}
-            >
-              <Nav.Item
-                itemKey="Settings1"
-                text="Settings1"
-                className={styles.navItem7}
-              />
-              <Nav.Item
-                itemKey="Settings2"
-                text="Settings2"
-                className={styles.navItem7}
-              />
-            </Nav.Sub>
-            <Nav.Sub
-              itemKey='Settings0'
-              text="Settings0"
-              icon={<IconToast className={styles.iconNavSub} />}
-            >
-              <Nav.Item
-                itemKey="Settings1"
-                text="Settings1"
-                className={styles.navItem7}
-              />
-              <Nav.Item
-                itemKey="Settings2"
-                text="Settings2"
-                className={styles.navItem7}
-              />
-            </Nav.Sub>
-            <Nav.Sub
-              itemKey='Settings0'
-              text="Settings0"
-              icon={<IconToast className={styles.iconNavSub} />}
-            >
-              <Nav.Item
-                itemKey="Settings1"
-                text="Settings1"
-                className={styles.navItem7}
-              />
-              <Nav.Item
-                itemKey="Settings2"
-                text="Settings2"
-                className={styles.navItem7}
-              />
-            </Nav.Sub>
-            <Nav.Sub
-              itemKey='Settings0'
-              text="Settings0"
-              icon={<IconToast className={styles.iconNavSub} />}
-            >
-              <Nav.Item
-                itemKey="Settings1"
-                text="Settings1"
-                className={styles.navItem7}
-              />
-              <Nav.Item
-                itemKey="Settings2"
-                text="Settings2"
-                className={styles.navItem7}
-              />
-            </Nav.Sub>
-            <Nav.Sub
-              itemKey='Settings0'
-              text="Settings0"
-              icon={<IconToast className={styles.iconNavSub} />}
-            >
-              <Nav.Item
-                itemKey="Settings1"
-                text="Settings1"
-                className={styles.navItem7}
-              />
-              <Nav.Item
-                itemKey="Settings2"
-                text="Settings2"
-                className={styles.navItem7}
-              />
-            </Nav.Sub>
-
             <Nav.Footer style={{ padding: 0 }}>
               {collapsed ? (
                 <div className={styles.collapsed} style={{ justifyContent: 'center' }}>

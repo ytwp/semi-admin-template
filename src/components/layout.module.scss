@@ -57,7 +57,8 @@
   }
 
   .nav::-webkit-scrollbar {
-    display: none; /* 隐藏滚动条 */
+    display: none;
+    /* 隐藏滚动条 */
   }
 
   .nav {
@@ -65,38 +66,7 @@
     padding-top: 60px;
     overflow-y: auto;
 
-    .navItem,
-    .navItem5 {
-      // width: 223px;
-
-      .iconIntro,
-      .iconRadio {
-        height: 20px;
-        position: relative;
-        width: 20px;
-      }
-    }
-
-    .navItem1,
-    .navItem2,
-    .navItem3,
-    .navItem4,
-    .navItem6,
-    .navItem7 {
-      // width: 223px;
-
-      .iconHeart,
-      .iconCalendar,
-      .iconCheckbox,
-      .iconCalendar,
-      .iconList,
-      .iconToast {
-        height: 20px;
-        width: 20px;
-      }
-    }
-
-    .iconNavSub {
+    .icon {
       height: 20px;
       width: 20px;
     }

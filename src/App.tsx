@@ -5,11 +5,10 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import { Path } from './constant';
 import { Login } from './components/login';
-import { Home } from './components/home';
 import { RootLayout as Layout } from './components/layout';
-import { Dashboard } from './components/dashboard';
+
+import { routers } from './router';
 
 function Screen() {
   const isAuthorized = true;
@@ -18,8 +17,15 @@ function Screen() {
       {isAuthorized ? (
         <Layout>
           <Routes>
-            <Route path={Path.Home} element={<Home />} />
-            <Route path={Path.Dashboard} element={<Dashboard />} />
+            {routers.flatMap((router) => {
+              if (router.items) {
+                return router.items.map((subRouter) => {
+                  return <Route {...subRouter.routeProps} key={subRouter.itemKey} />
+                })
+              } else {
+                return [<Route {...router.routeProps} key={router.itemKey} />]
+              }
+            })}
           </Routes>
         </Layout>
       ) : (
