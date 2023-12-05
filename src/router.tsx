@@ -8,14 +8,12 @@ import { Dashboard } from './components/dashboard';
 import { Settings as Settings1 } from './components/settings1';
 import { Settings as Settings2 } from './components/settings2';
 
-
-
 export interface SubItemItem extends NavItemPropsWithItems {
   routeProps: RouteProps,
 }
 
 export interface SubRouterItem extends SubNavProps {
-  items?: (SubItemItem)[],
+  items: (SubItemItem)[],
   routeProps?: RouteProps,
 }
 

@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { Login } from './components/login';
 import { RootLayout as Layout } from './components/layout';
-
 import { routers } from './router';
 
 function Screen() {
