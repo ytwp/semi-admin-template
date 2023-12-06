@@ -1,7 +1,31 @@
-import { Form, Button } from '@douyinfe/semi-ui';
+import { Form, Button, Toast } from '@douyinfe/semi-ui';
 import styles from './login.module.scss';
+import Locale from "../locales";
+import { useState } from 'react';
+import { FormApi } from '@douyinfe/semi-ui/lib/es/form';
+import { loginApi } from '../api/user/login';
+import { useAccessStore } from '../store';
 
 export function Login() {
+
+  const access = useAccessStore();
+
+  const [formApi, setFormApi] = useState<FormApi<any>>();
+
+  const [loginBo, setLoginBo] = useState<Record<string, any>>({});
+
+  const submit = () => {
+    if (formApi) {
+      formApi.validate(['username', 'password'])
+        .then(() => {
+          loginApi(loginBo).then(data => {
+            access.updateToken(data.token);
+            Toast.success(Locale.Auth.LoginSuccess);
+          }).catch(() => { });
+        }).catch(() => { });
+    }
+  }
+
   return (
     <div className={styles.main}>
       <div className={styles.login}>
@@ -11,33 +35,43 @@ export function Login() {
             className={styles.logo}
           />
           <div className={styles.header}>
-            <p className={styles.title}>欢迎回来</p>
+            <p className={styles.title}>{Locale.Auth.LoginTitle}</p>
             <p className={styles.text}>
-              <span className={styles.text}>登录</span>
-              <span className={styles.text1}> Semi Design </span>
-              <span className={styles.text2}>账户</span>
+              <span className={styles.text}>{Locale.Auth.tips.tip1}</span>
+              <span className={styles.text1}>{Locale.Auth.tips.tip2}</span>
+              <span className={styles.text2}>{Locale.Auth.tips.tip3}</span>
             </p>
           </div>
         </div>
         <div className={styles.form}>
-          <Form className={styles.inputs}>
+          <Form className={styles.inputs} getFormApi={setFormApi} onValueChange={values => setLoginBo(values)}>
             <Form.Input
-              label={{ text: "用户名" }}
-              field="input"
-              placeholder="输入用户名"
+              label={{ text: Locale.Auth.Username }}
+              field="username"
+              placeholder={Locale.Auth.UsernameTip}
               style={{ width: "100%" }}
               fieldStyle={{ alignSelf: "stretch", padding: 0 }}
+              rules={[
+                { required: true, message: 'required error' },
+                { type: 'string', message: 'type error' },
+                // { validator: (rule, value) => value === 'admin', message: 'should be admin' },
+              ]}
             />
             <Form.Input
-              label={{ text: "密码" }}
-              field="field1"
-              placeholder="输入密码"
+              label={{ text: Locale.Auth.Password }}
+              field="password"
+              type="password"
+              placeholder={Locale.Auth.PasswordTip}
               style={{ width: "100%" }}
               fieldStyle={{ alignSelf: "stretch", padding: 0 }}
+              rules={[
+                { required: true, message: 'required error' },
+                { type: 'string', message: 'type error' },
+              ]}
             />
           </Form>
-          <Button theme="solid" className={styles.button}>
-            登录
+          <Button theme="solid" className={styles.button} onClick={submit}>
+            {Locale.Auth.Login}
           </Button>
         </div>
       </div>

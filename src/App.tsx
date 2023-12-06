@@ -1,4 +1,3 @@
-import './App.css'
 import { ErrorBoundary } from './components/error';
 import {
   HashRouter as Router,
@@ -10,12 +9,13 @@ import { RootLayout as Layout } from './components/layout';
 import { routers } from './router';
 import { LocaleProvider } from '@douyinfe/semi-ui';
 import { getSemiLang } from './locales';
+import { useAccessStore } from './store';
 
 function Screen() {
-  const isAuthorized = true;
+  const access = useAccessStore();
   return (
     <>
-      {isAuthorized ? (
+      {access.isAuthorized() ? (
         <Layout>
           <Routes>
             {routers.flatMap((router) => {
