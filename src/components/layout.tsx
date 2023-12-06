@@ -11,7 +11,7 @@ export const RootLayout = (props: {
 }) => {
   const { Header, Sider, Content } = Layout;
   const [collapsed, setCollapsed] = useState(false)
-  const [selectedKey, setSelectedKey] = useState('/')
+  const [selectedKey, setSelectedKey] = useState('')
   return (
     <Layout>
       <Header className={styles.header}>

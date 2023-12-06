@@ -14,6 +14,9 @@ dependencies:
   '@douyinfe/semi-ui':
     specifier: ^2.47.1
     version: registry.npmmirror.com/@douyinfe/semi-ui@2.47.1(react-dom@18.2.0)(react@18.2.0)
+  moment:
+    specifier: ^2.29.4
+    version: registry.npmmirror.com/moment@2.29.4
   react:
     specifier: ^18.2.0
     version: registry.npmmirror.com/react@18.2.0
@@ -26,6 +29,9 @@ dependencies:
   sass:
     specifier: ^1.69.5
     version: registry.npmmirror.com/sass@1.69.5
+  zustand:
+    specifier: ^4.3.8
+    version: registry.npmmirror.com/zustand@4.3.8(react@18.2.0)
 
 devDependencies:
   '@types/react':
@@ -2214,6 +2220,12 @@ packages:
     dependencies:
       brace-expansion: registry.npmmirror.com/brace-expansion@1.1.11
 
+  registry.npmmirror.com/moment@2.29.4:
+    resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/moment/-/moment-2.29.4.tgz}
+    name: moment
+    version: 2.29.4
+    dev: false
+
   registry.npmmirror.com/ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ms/-/ms-2.1.2.tgz}
     name: ms
@@ -2756,6 +2768,17 @@ packages:
       punycode: registry.npmmirror.com/punycode@2.3.1
     dev: true
 
+  registry.npmmirror.com/use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz}
+    id: registry.npmmirror.com/use-sync-external-store/1.2.0
+    name: use-sync-external-store
+    version: 1.2.0
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: registry.npmmirror.com/react@18.2.0
+    dev: false
+
   registry.npmmirror.com/utility-types@3.10.0:
     resolution: {integrity: sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/utility-types/-/utility-types-3.10.0.tgz}
     name: utility-types
@@ -2835,3 +2858,22 @@ packages:
     version: 0.1.0
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/zustand@4.3.8(react@18.2.0):
+    resolution: {integrity: sha512-4h28KCkHg5ii/wcFFJ5Fp+k1J3gJoasaIbppdgZFO4BPJnsNxL0mQXBSFgOgAdCdBj35aDTPvdAJReTMntFPGg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/zustand/-/zustand-4.3.8.tgz}
+    id: registry.npmmirror.com/zustand/4.3.8
+    name: zustand
+    version: 4.3.8
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      immer: '>=9.0'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      immer:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      react: registry.npmmirror.com/react@18.2.0
+      use-sync-external-store: registry.npmmirror.com/use-sync-external-store@1.2.0(react@18.2.0)
+    dev: false
