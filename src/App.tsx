@@ -8,6 +8,8 @@ import {
 import { Login } from './components/login';
 import { RootLayout as Layout } from './components/layout';
 import { routers } from './router';
+import { LocaleProvider } from '@douyinfe/semi-ui';
+import { getSemiLang } from './locales';
 
 function Screen() {
   const isAuthorized = true;
@@ -40,9 +42,11 @@ function App() {
   return (
     <>
       <ErrorBoundary>
-        <Router>
-          <Screen />
-        </Router>
+        <LocaleProvider locale={getSemiLang()}>
+          <Router>
+            <Screen />
+          </Router>
+        </LocaleProvider >
       </ErrorBoundary>
     </>
   )

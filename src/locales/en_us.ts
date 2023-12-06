@@ -1,6 +1,6 @@
 import { LocaleType } from "./index";
 
-const en_us: LocaleType = {
+const en_US: LocaleType = {
   Error: {
     Unauthorized: "Currently not logged in.",
     MustAuthorized: "Currently not logged in, please log in and use.",
@@ -64,4 +64,4 @@ const en_us: LocaleType = {
   },
 };
 
-export default en_us;
+export default en_US;

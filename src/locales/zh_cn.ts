@@ -1,5 +1,5 @@
 
-const zh_cn = {
+const zh_CN = {
   Error: {
     Unauthorized: "当前未登录。",
     MustAuthorized: "当前未登录，请登录后使用。",
@@ -69,7 +69,7 @@ type DeepPartial<T> = T extends object
     }
   : T;
 
-export type LocaleType = typeof zh_cn;
-export type PartialLocaleType = DeepPartial<typeof zh_cn>;
+export type LocaleType = typeof zh_CN;
+export type PartialLocaleType = DeepPartial<typeof zh_CN>;
 
-export default zh_cn;
+export default zh_CN;

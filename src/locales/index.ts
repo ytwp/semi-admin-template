@@ -1,12 +1,16 @@
-import zh_cn from "./zh_cn";
-import en_us from "./en_us";
+import zh_CN from "./zh_CN";
+import en_US from "./en_US";
 import { merge } from "../utils/merge";
-import type { LocaleType } from "./zh_cn";
-export type { LocaleType, PartialLocaleType } from "./zh_cn";
+import type { LocaleType } from "./zh_CN";
+export type { LocaleType, PartialLocaleType } from "./zh_CN";
+import { Locale } from '@douyinfe/semi-ui/lib/es/locale/interface';
+
+import semi_zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN';
+import semi_en_US from '@douyinfe/semi-ui/lib/es/locale/source/en_US';
 
 const ALL_LANGS = {
-  zh_cn,
-  en_us,
+  zh_CN,
+  en_US,
 };
 
 export type Lang = keyof typeof ALL_LANGS;
@@ -14,19 +18,24 @@ export type Lang = keyof typeof ALL_LANGS;
 export const AllLangs = Object.keys(ALL_LANGS) as Lang[];
 
 export const ALL_LANG_OPTIONS: Record<Lang, string> = {
-  zh_cn: "简体中文",
-  en_us: "English",
+  zh_CN: "简体中文",
+  en_US: "English",
 };
 
 export const SERVER_LAND_MAPPER: Record<Lang, string> = {
-  zh_cn: "zh_CN",
-  en_us: "en_US",
+  zh_CN: "zh_CN",
+  en_US: "en_US",
+};
+
+export const SEMI_LAND_MAPPER: Record<Lang, Locale> = {
+  zh_CN: semi_zh_CN,
+  en_US: semi_en_US,
 };
 
 const LANG_KEY = "lang";
-const DEFAULT_LANG = "en_us";
+const DEFAULT_LANG = "en_US";
 
-const fallbackLang = en_us;
+const fallbackLang = en_US;
 const targetLang = ALL_LANGS[getLang()] as LocaleType;
 
 // if target lang missing some fields, it will use fallback lang string
@@ -78,6 +87,10 @@ export function getLang(): Lang {
 
 export function getServerLang(): string {
   return SERVER_LAND_MAPPER[getLang()]
+}
+
+export function getSemiLang(): Locale {
+  return SEMI_LAND_MAPPER[getLang()]
 }
 
 export function changeLang(lang: Lang) {
