@@ -10,12 +10,19 @@ const en_US: LocaleType = {
     LocalCacheClean: "Clear All Cache",
   },
   Auth: {
-    LoginTitle: "Sign in account",
+    LoginTitle: "Welcome",
+    tips: {
+      tip1: "Sign in",
+      tip2: " Semi Design ",
+      tip3: "Account"
+    },
     RegisterTitle: "Sign up account",
     Tips: "The first login will generate a new account after verification",
     Username: "username",
     Email: "email",
     Password: "password",
+    PasswordTip: "input username",
+    UsernameTip: "input password",
     Code: "code",
     Send: "Send",
     Register: "Sign up",

@@ -9,12 +9,19 @@ const zh_CN = {
     LocalCacheClean: "清除所有缓存",
   },
   Auth: {
-    LoginTitle: "登录账号",
+    LoginTitle: "欢迎回来",
+    tips: {
+      tip1: "登录",
+      tip2: " Semi Design ",
+      tip3: "账户"
+    },
     RegisterTitle: "注册账号",
-    Tips: "首次登录将在验证后生成新账号",
-    Email: "输入邮箱",
-    Password: "输入密码",
-    Username: "输入账号",
+    Tips: " 首次登录将在验证后生成新账号",
+    Email:  "输入邮箱",
+    Password: "密码",
+    Username: "账号",
+    PasswordTip: "输入密码",
+    UsernameTip: "输入账号",
     Code: "验证码",
     Send: "发送",
     Login: "登录",
@@ -70,6 +77,6 @@ type DeepPartial<T> = T extends object
   : T;
 
 export type LocaleType = typeof zh_CN;
-export type PartialLocaleType = DeepPartial<typeof zh_CN>;
-
+     type PartialLocaleType = DeepPartial<typeof zh_CN>;
+  
 export default zh_CN;
