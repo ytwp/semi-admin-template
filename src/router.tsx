@@ -2,8 +2,10 @@ import { IconHeart, IconIntro, IconToast } from "@douyinfe/semi-icons-lab";
 import { NavItemProps, NavItemPropsWithItems, SubNavProps } from "@douyinfe/semi-ui/lib/es/navigation";
 import styles from './components/layout.module.scss';
 import { RouteProps } from "react-router-dom";
-import { Home } from "./components/home";
 
+import Locale from "./locales";
+
+import { Home } from "./components/home";
 import { Dashboard } from './components/dashboard';
 import { Settings as Settings1 } from './components/settings1';
 import { Settings as Settings2 } from './components/settings2';
@@ -27,7 +29,7 @@ export type RouterItems = (RouterItem | SubRouterItem)[]
 export const routers: RouterItems = [
   {
     itemKey: '',
-    text: "Home",
+    text: Locale.Menu.Sider.Home,
     icon: <IconIntro className={styles.icon} />,
     routeProps: {
       path: '/',
@@ -36,7 +38,7 @@ export const routers: RouterItems = [
   },
   {
     itemKey: 'dashboard',
-    text: "Dashboard",
+    text: Locale.Menu.Sider.Dashboard,
     icon: <IconHeart className={styles.icon} />,
     routeProps: {
       path: '/dashboard',
@@ -45,12 +47,12 @@ export const routers: RouterItems = [
   },
   {
     itemKey: "settings",
-    text: "Settings",
+    text: Locale.Menu.Sider.Settings,
     icon: <IconToast className={styles.icon} />,
     items: [
       {
         itemKey: "settings1",
-        text: "Settings1",
+        text: Locale.Menu.Sider.Settings1,
         routeProps: {
           path: '/settings/settings1',
           element: < Settings1 />
@@ -58,7 +60,7 @@ export const routers: RouterItems = [
       },
       {
         itemKey: "settings2",
-        text: "Settings2",
+        text: Locale.Menu.Sider.Settings2,
         routeProps: {
           path: '/settings/settings2',
           element: < Settings2 />

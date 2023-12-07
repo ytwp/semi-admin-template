@@ -12,6 +12,13 @@ const zh_CN = {
     Header: {
       PersonalCenter: "个人中心",
       Logout: "退出登陆"
+    },
+    Sider: {
+      Home: "首页",
+      Dashboard: "控制台",
+      Settings: "设置",
+      Settings1: "设置1",
+      Settings2: "设置2"
     }
   },
   Auth: {

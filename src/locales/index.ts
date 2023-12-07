@@ -9,8 +9,8 @@ import semi_zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN';
 import semi_en_US from '@douyinfe/semi-ui/lib/es/locale/source/en_US';
 
 const ALL_LANGS = {
-  zh_CN,
   en_US,
+  zh_CN,
 };
 
 export type Lang = keyof typeof ALL_LANGS;
@@ -18,18 +18,18 @@ export type Lang = keyof typeof ALL_LANGS;
 export const AllLangs = Object.keys(ALL_LANGS) as Lang[];
 
 export const ALL_LANG_OPTIONS: Record<Lang, string> = {
-  zh_CN: "简体中文",
   en_US: "English",
+  zh_CN: "简体中文",
 };
 
 export const SERVER_LAND_MAPPER: Record<Lang, string> = {
-  zh_CN: "zh_CN",
   en_US: "en_US",
+  zh_CN: "zh_CN",
 };
 
 export const SEMI_LAND_MAPPER: Record<Lang, Locale> = {
-  zh_CN: semi_zh_CN,
   en_US: semi_en_US,
+  zh_CN: semi_zh_CN,
 };
 
 const LANG_KEY = "lang";

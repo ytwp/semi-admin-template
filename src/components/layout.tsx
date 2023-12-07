@@ -1,12 +1,12 @@
-import { Nav, Avatar, Layout, Dropdown, Button, Toast } from '@douyinfe/semi-ui';
-import { IconGithubLogo, IconSemiLogo, IconDoubleChevronRight, IconDoubleChevronLeft } from '@douyinfe/semi-icons';
+import { Nav, Avatar, Layout, Dropdown, Button, Toast, Select } from '@douyinfe/semi-ui';
+import { IconGithubLogo, IconSemiLogo, IconDoubleChevronRight, IconDoubleChevronLeft, IconMoon, IconSun, IconMark } from '@douyinfe/semi-icons';
 import styles from './layout.module.scss';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { routers } from '../router';
-import { useAccessStore, useConfigStore } from '../store';
+import { Theme, useAccessStore, useConfigStore } from '../store';
 import { logoutApi } from '../api/user/login';
-import Locale from "../locales";
+import Locale, { ALL_LANG_OPTIONS, AllLangs, Lang, changeLang, getLang } from "../locales";
 
 
 export const RootLayout = (props: {
@@ -27,6 +27,15 @@ export const RootLayout = (props: {
     }).catch(() => { });
   }
 
+  const theme = config.theme;
+  function nextTheme() {
+    const themes = [Theme.Auto, Theme.Light, Theme.Dark];
+    const themeIndex = themes.indexOf(theme);
+    const nextIndex = (themeIndex + 1) % themes.length;
+    const nextTheme = themes[nextIndex];
+    config.update((config) => (config.theme = nextTheme));
+  }
+
   return (
     <Layout>
       <Header className={styles.header}>
@@ -42,7 +51,28 @@ export const RootLayout = (props: {
           }}
           footer={
             <div className={styles.dIV}>
-              <Button icon={<IconGithubLogo className={styles.semiIconsBell} />} aria-label="GitHub" onClick={() => window.open('https://github.com/ytwp/semi-admin-template', '_blank')} />
+              <Select defaultValue={getLang()} onSelect={(e) => (
+                changeLang(e as Lang)
+              )}>
+                {AllLangs.map((lang) => (
+                  <Select.Option value={lang} key={lang}>{ALL_LANG_OPTIONS[lang]}</Select.Option>
+                ))}
+              </Select>
+
+              <Button icon={
+                theme === Theme.Auto ? (
+                  <IconMark className={styles.semiIconsBell} />
+                ) : theme === Theme.Light ? (
+                  <IconSun className={styles.semiIconsBell} />
+                ) : theme === Theme.Dark ? (
+                  <IconMoon className={styles.semiIconsBell} />
+                ) : null}
+                aria-label="Switch Theme"
+                onClick={nextTheme} />
+
+              <Button icon={<IconGithubLogo className={styles.semiIconsBell} />}
+                aria-label="GitHub"
+                onClick={() => window.open('https://github.com/ytwp/semi-admin-template', '_blank')} />
 
               <Dropdown
                 position={'bottomRight'}
@@ -79,7 +109,6 @@ export const RootLayout = (props: {
             isCollapsed={collapsed}
             onCollapseChange={(e) => { console.log(e) }}
             renderWrapper={({ itemElement, props }) => {
-              console.log(itemElement, props)
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               if (props.routeProps) {

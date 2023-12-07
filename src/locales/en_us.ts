@@ -13,6 +13,13 @@ const en_US: LocaleType = {
     Header: {
       PersonalCenter: "Profile",
       Logout: "Logout"
+    },
+    Sider: {
+      Home: "Home",
+      Dashboard: "Dashboard",
+      Settings: "Settings",
+      Settings1: "Settings1",
+      Settings2: "Settings2"
     }
   },
   Auth: {
