@@ -17,7 +17,7 @@ const zh_CN = {
     },
     RegisterTitle: "注册账号",
     Tips: " 首次登录将在验证后生成新账号",
-    Email:  "输入邮箱",
+    Email: "输入邮箱",
     Password: "密码",
     Username: "账号",
     PasswordTip: "输入密码",
@@ -72,11 +72,11 @@ const zh_CN = {
 
 type DeepPartial<T> = T extends object
   ? {
-      [P in keyof T]?: DeepPartial<T[P]>;
-    }
+    [P in keyof T]?: DeepPartial<T[P]>;
+  }
   : T;
 
 export type LocaleType = typeof zh_CN;
-     type PartialLocaleType = DeepPartial<typeof zh_CN>;
-  
+export type PartialLocaleType = DeepPartial<typeof zh_CN>;
+
 export default zh_CN;
