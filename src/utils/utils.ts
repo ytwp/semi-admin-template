@@ -105,7 +105,7 @@ export function isFirefox() {
   );
 }
 
-export function selectOrCopy(el: HTMLElement, content: string) {
+export function selectOrCopy(_el: HTMLElement, content: string) {
   const currentSelection = window.getSelection();
 
   if (currentSelection?.type === "Range") {
