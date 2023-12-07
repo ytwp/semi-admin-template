@@ -9,7 +9,7 @@
     align-items: center;
     background: var(--semi-color-bg-0);
     border-radius: 8px;
-    box-shadow: 0px 4px 14px 0px #0000001a, 0px 0px 1px 0px #0000004d;
+    box-shadow: var(--login-shadow);
     display: flex;
     flex-direction: column;
     padding: 48px 56px;

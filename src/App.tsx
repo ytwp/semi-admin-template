@@ -1,3 +1,4 @@
+import "./styles/globals.scss";
 import { ErrorBoundary } from './components/error';
 import {
   HashRouter as Router,
@@ -12,6 +13,7 @@ import { getSemiLang } from './locales';
 import { useAccessStore, useConfigStore } from './store';
 import { useEffect } from 'react';
 import { getCSSVar } from './utils/utils';
+
 
 function Screen() {
   useSwitchTheme()
