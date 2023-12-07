@@ -9,6 +9,12 @@ const en_US: LocaleType = {
     LocalCacheTry: "Please clean the cache and try again!",
     LocalCacheClean: "Clear All Cache",
   },
+  Menu: {
+    Header: {
+      PersonalCenter: "Profile",
+      Logout: "Logout"
+    }
+  },
   Auth: {
     LoginTitle: "Welcome",
     tips: {
@@ -32,6 +38,7 @@ const en_US: LocaleType = {
     LoginSuccess: "Login Success",
     RegisterSuccess: "Register Success",
     Expiration: "Login has expired, please log in again",
+    LogoutSuccess: "Logout Success",
   },
   Settings: {
     Title: "Settings",

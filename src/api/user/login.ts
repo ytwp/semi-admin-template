@@ -8,6 +8,12 @@ export async function loginApi(body: Record<string, any>) {
   }
 }
 
+export async function logoutApi(body: Record<string, any>) {
+  // return api.post('/user/logout', body)
+  console.log('logoutApi', body)
+  return {}
+}
+
 export async function getInfoApi() {
   // return api.get('/user/getInfo')
   console.log('getInfoApi')

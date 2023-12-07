@@ -1,17 +1,32 @@
-import { Nav, Avatar, Layout, Dropdown, Button } from '@douyinfe/semi-ui';
+import { Nav, Avatar, Layout, Dropdown, Button, Toast } from '@douyinfe/semi-ui';
 import { IconGithubLogo, IconSemiLogo, IconDoubleChevronRight, IconDoubleChevronLeft } from '@douyinfe/semi-icons';
 import styles from './layout.module.scss';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { routers } from '../router';
+import { useAccessStore, useConfigStore } from '../store';
+import { logoutApi } from '../api/user/login';
+import Locale from "../locales";
 
 
 export const RootLayout = (props: {
   children: React.ReactNode
 }) => {
+  const access = useAccessStore();
+  const config = useConfigStore();
+
   const { Header, Sider, Content } = Layout;
   const [collapsed, setCollapsed] = useState(false)
   const [selectedKey, setSelectedKey] = useState('')
+
+  const lonout = () => {
+    logoutApi({}).then(data => {
+      console.log(data)
+      access.updateToken("");
+      Toast.success(Locale.Auth.LogoutSuccess);
+    }).catch(() => { });
+  }
+
   return (
     <Layout>
       <Header className={styles.header}>
@@ -33,18 +48,18 @@ export const RootLayout = (props: {
                 position={'bottomRight'}
                 render={
                   <Dropdown.Menu>
-                    <Dropdown.Item>个人中心</Dropdown.Item>
-                    <Dropdown.Item>退出登陆</Dropdown.Item>
+                    <Dropdown.Item>{Locale.Menu.Header.PersonalCenter}</Dropdown.Item>
+                    <Dropdown.Item onClick={lonout}>{Locale.Menu.Header.Logout}</Dropdown.Item>
                   </Dropdown.Menu>
                 }
               >
                 <Avatar
                   size="small"
-                  src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/avatarDemo.jpeg"
+                  src={access.avatar || config.avatar}
                   color="blue"
                   className={styles.avatar}
                 >
-                  示例
+                  {access.nickName}
                 </Avatar>
               </Dropdown>
             </div>
@@ -66,13 +81,13 @@ export const RootLayout = (props: {
             renderWrapper={({ itemElement, props }) => {
               console.log(itemElement, props)
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              //@ts-ignore
+              // @ts-ignore
               if (props.routeProps) {
                 return (
                   <Link
                     style={{ textDecoration: "none" }}
                     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                    //@ts-ignore
+                    // @ts-ignore
                     to={props.routeProps.path}
                   >
                     {itemElement}

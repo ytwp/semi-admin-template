@@ -8,6 +8,12 @@ const zh_CN = {
     LocalCacheTry: "请清理缓存后重试！",
     LocalCacheClean: "清除所有缓存",
   },
+  Menu: {
+    Header: {
+      PersonalCenter: "个人中心",
+      Logout: "退出登陆"
+    }
+  },
   Auth: {
     LoginTitle: "欢迎回来",
     tips: {
@@ -31,6 +37,7 @@ const zh_CN = {
     LoginSuccess: "登录成功",
     RegisterSuccess: "注册成功",
     Expiration: "登陆已失效，请重新登陆",
+    LogoutSuccess: "退出登录",
   },
   Settings: {
     Title: "设置",

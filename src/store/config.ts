@@ -23,7 +23,7 @@ export type AppConfigStore = AppConfig & {
   update: (updater: (config: AppConfig) => void) => void;
 };
 
-export const useAppConfig = create<AppConfigStore>()(
+export const useConfigStore = create<AppConfigStore>()(
   persist(
     (set, get) => ({
       ...DEFAULT_CONFIG,
